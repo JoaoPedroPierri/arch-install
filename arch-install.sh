@@ -47,7 +47,6 @@ arch_chroot_enter(){
 }
 
 format_disk
-subvolumes
 mount_partitions
 pacstrap_arch
 fstab_gen
