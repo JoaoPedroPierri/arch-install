@@ -25,9 +25,15 @@ mount_partitions(){
   swapon /dev/sda3 
 }
 
-iwctl_enable(){
+iwct_enable(){
   iwctl
-  station wlan0 connect <VMVJP>
+  device list
+  printf "\n\nDigite o nome da sua rede abaixo:\n\n"
+  read REDE_NOME
+  station wlan0 connect "$REDE_NOME"
+  clear && printf "Digite a senha do seu wifi abaixo:\n\n"
+  read SENHA
+  iwctl --passphrase "$SENHA" station dispositivo connect "$REDE_NOME"
 }
 
 pacstrap_arch(){
