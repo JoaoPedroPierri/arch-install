@@ -25,6 +25,11 @@ mount_partitions(){
   swapon /dev/sda3 
 }
 
+iwctl_enable(){
+  iwctl
+  station wlan0 connect <VMVJP>
+}
+
 pacstrap_arch(){
   clear
   echo -e "[!] - Instalando os pacotes base do Arch Linux\n"
@@ -48,6 +53,7 @@ arch_chroot_enter(){
 
 format_disk
 mount_partitions
+iwctl_enable
 pacstrap_arch
 fstab_gen
 arch_chroot_enter
