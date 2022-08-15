@@ -19,10 +19,10 @@ mount_partitions(){
   clear
   echo -e "[!] - Montando as partições\n"
   sleep 2
- mount /dev/sda2 /mnt 
- mkdir -p /mnt/boot/efi && mount /dev/sda1 /mnt/boot/efi 
- mkdir /mnt/home && mount /dev/sda4 /mnt/home 
- swapon /dev/sda3 
+  mount /dev/sda2 /mnt 
+  mkdir -p /mnt/boot/efi && mount /dev/sda1 /mnt/boot/efi 
+  mkdir /mnt/home && mount /dev/sda4 /mnt/home 
+  swapon /dev/sda3 
 }
 
 pacstrap_arch(){
