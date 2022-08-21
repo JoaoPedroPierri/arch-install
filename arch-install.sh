@@ -19,8 +19,24 @@ mount_partitions(){
   sleep 2
   mount /dev/sda2 /mnt 
   mkdir -p /mnt/boot/efi && mount /dev/sda1 /mnt/boot/efi 
+<<<<<<< HEAD
   mkdir /mnt/home && mount /dev/sda3 /mnt/home 
  
+=======
+  mkdir /mnt/home && mount /dev/sda4 /mnt/home 
+  swapon /dev/sda3 
+}
+
+iwct_enable(){
+  iwctl
+  device list
+  printf "\n\nDigite o nome da sua rede abaixo:\n\n"
+  read REDE_NOME
+  station wlan0 connect "$REDE_NOME"
+  clear && printf "Digite a senha do seu wifi abaixo:\n\n"
+  read SENHA
+  iwctl --passphrase "$SENHA" station dispositivo connect "$REDE_NOME"
+>>>>>>> c1f275f3da95c41f2b197eb89b6ec861ce40bb44
 }
 
 pacstrap_arch(){
@@ -46,6 +62,7 @@ arch_chroot_enter(){
 
 format_disk
 mount_partitions
+iwctl_enable
 pacstrap_arch
 fstab_gen
 arch_chroot_enter
